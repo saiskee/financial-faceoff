@@ -6,7 +6,6 @@ import NewGameComponent from "../NewGame";
 import GamesComponent from '../Home';
 import RegularPlay from "../RegularPlay/RegularPlay";
 import FastMoney from "../FastMoney/FastMoney";
-import {isMobile} from 'react-device-detect';
 import './App.css';
 import Navbar from "../../components/Navbar";
 import Buzzer from "../Buzzer/Buzzer";
@@ -26,7 +25,7 @@ const styles = {
 };
 
 const EverythingButBuzzer = (props) => (
-  !isMobile ?
+  
     props.currentUser ?
       <Switch>
         <Route path="/" exact component={GamesComponent}/>
@@ -39,11 +38,7 @@ const EverythingButBuzzer = (props) => (
         <h1>Welcome to the Family Fued Web App!</h1>
         <h2>Login or Register to Play!</h2>
       </Paper>
-    :
-    <Paper style={styles.mobile}>
-      <h2>This page is not available on a mobile device. Use a desktop to continue!</h2>
-      <h5>Only the buzzer is available on mobile devices.</h5>
-    </Paper>
+    
 );
 
 

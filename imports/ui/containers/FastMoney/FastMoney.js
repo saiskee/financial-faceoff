@@ -71,7 +71,7 @@ class FastMoney extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       Meteor.call("toController", this.game_id, { ...this.state });
-    }, 3000);
+    }, 1000);
 
     Streamy.on(this.game_id + "toGame", data => {
       if (data.command.hasOwnProperty("round1")) {

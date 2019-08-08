@@ -107,7 +107,7 @@ class RegularPlay extends React.Component {
         ...this.state,
         question_num: this.question_num
       });
-    }, 3000);
+    }, 1000);
     this.getNewQuestion(this.question_num);
     this.props.pause();
 

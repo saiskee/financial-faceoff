@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button/index";
 import {withRouter} from "react-router";
 import withAudio from "../hoc/withAudio";
 import Paper from "@material-ui/core/Paper";
+import {isMobile} from 'react-device-detect';
 
 const styles = {
   home: {
@@ -27,9 +28,14 @@ class Home extends React.Component {
       return (
         <Grid item sm={6} key={i}>
           <Paper style={styles.paper}>
+            {!isMobile && 
             <Button onClick={() => {
               localStorage.removeItem(game._id);
-              this.props.history.push(`/games/${game._id}/regular/0`)}}>{game.title}</Button>
+              this.props.history.push(`/games/${game._id}/regular/0`)}}>Play {game.title}
+            </Button>}
+            <Button variant="contained" color={"primary"} style={{float:'left'}} onClick={()=> {this.props.history.push(
+          `/games/${game._id}/controller`)}
+        }>(Controller for {game.title})</Button>
           </Paper>
         </Grid>
       )

@@ -266,10 +266,10 @@ class Controller extends React.Component{
 
 				<h2>Question {question_num + 1}: {question}</h2>
 				</div>
-			<Grid container spacing={2}>
+			<Grid container spacing={1}>
 			{answers.map((ans, index) =>{
 				return (
-					<Grid item xs key={index}>
+					<Grid item xs={6} md={3} key={index}>
 					<div className="fued-result" onClick={this.showAnswer.bind(this, index)}>
 						<div className="flip-panel" style={{transform: "rotateX(180deg)"}}>
 						<div className="panel-front">
