@@ -1,0 +1,13 @@
+.TransferList button {
+    margin: 10px;
+}
+
+.TransferList .itemtext {
+    transform: translateY(-6px);
+    display: inline-block;
+}
+
+.TransferList .scrolling-list {
+    max-height: 450px;
+    overflow: scroll;
+}

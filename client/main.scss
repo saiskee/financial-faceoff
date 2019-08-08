@@ -1,0 +1,37 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  background-image: url("/family-fued-background.png");
+  background-size: 100% 800px;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position-y: 43px;
+}
+
+li {
+  list-style: none;
+}
+
+.warning {
+  color: #f44336;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h1 {
+  font-size: 4em;
+  margin-bottom: 15px;
+}
+
+#modal:focus {
+  outline: none;
+}
+
+button {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}

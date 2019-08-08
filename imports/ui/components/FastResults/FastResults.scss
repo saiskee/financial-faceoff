@@ -1,0 +1,104 @@
+.FastResults {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  color: white;
+  background: darkblue;
+  padding: 30px;
+}
+
+/*My custom blinking css*/
+
+.input-area {
+  background-color: black;
+  border-radius: 2px;
+  box-shadow: 2px 2px 3px #888888;
+}
+
+.fast-response {
+  padding: 2px 2px 2px 10px;
+  flex-grow: 1;
+  text-transform: uppercase;
+  margin-right: 3px;
+  position: relative;
+}
+
+.fast-points {
+  width: 44px;
+  text-align: center;
+}
+
+.fast-row {
+  font-size: 37px;
+  height: 45px;
+  display: flex;
+  color: white;
+  padding: 3px;
+  position: relative;
+  overflow: hidden;
+
+  span {
+    position: relative;
+    bottom: 7px;
+  }
+}
+
+.black-container {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 3px;
+}
+
+.black-bar {
+  flex-grow: 1;
+  flex-shrink: 0.001;
+  flex-basis: auto;
+  height: 100%;
+  background-color: black;
+  animation: shrink .3s linear forwards;
+}
+
+.black-bar::before {
+  content: "";
+  display: block;
+  height: 100%;
+  background: red;
+  width: 45px;
+  position: relative;
+  left: 0;
+  animation: flash-red 1s linear infinite .3s;
+}
+
+@keyframes flash-red {
+  from {
+    background: red;
+  }
+  50% {
+    background: red;
+  }
+  51% {
+    background: black;
+  }
+  to {
+    background: black;
+  }
+}
+
+@keyframes shrink {
+  from {
+    flex-grow: 1;
+  }
+  to {
+    flex-grow: 0.001;
+  }
+}
+
+.hide {
+  display: none;
+}

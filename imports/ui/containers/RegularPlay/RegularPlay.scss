@@ -1,0 +1,162 @@
+.fued-result {
+  background-color: transparent;
+  height: 52px;
+  perspective: 1000px;
+  margin: 18px 14px 27px 14px;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.RegularPlay {
+  color: white;
+}
+
+.flip-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 3px 4px white,
+  0 0 0 8px black,
+  0 0 3px 12px white;
+  /*box-sizing: border-box;*/
+  /*margin: 12px;*/
+}
+
+.panel-front {
+  background: linear-gradient(
+                  to bottom,
+                  rgb(95, 145, 225),
+                  rgb(66, 110, 210) 60%,
+                  rgb(39, 72, 153) 70%,
+                  rgb(39, 72, 153)
+  );
+
+  h2 {
+    line-height: 52px;
+    margin: 0;
+    background: radial-gradient(
+                    ellipse 24px 20px,
+                    rgb(23, 33, 70),
+                    rgb(23, 33, 70) 90%,
+                    rgb(116, 146, 228) 95%,
+                    rgb(23, 33, 70),
+                    transparent 30px);
+  }
+}
+
+/* Style the back side */
+.panel-back {
+  background: linear-gradient(
+                  to bottom,
+                  rgb(95, 145, 225),
+                  rgb(66, 110, 210) 60%,
+                  rgb(39, 72, 153) 70%,
+                  rgb(39, 72, 153)
+  );
+  transform: rotateY(180deg) rotateZ(180deg);
+
+  span {
+    line-height: 52px;
+    margin: 0;
+  }
+}
+
+.panel-front, .panel-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 0 15px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+.board {
+  width: 39%;
+  position: absolute;
+  top: 231px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.points {
+  float: right;
+}
+
+.panel-answer {
+  float: left;
+}
+
+.fued-points {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 66px;
+  top: 78px;
+}
+
+.button-group {
+  button {
+    display: block;
+  }
+
+}
+
+.bottom-right-controls {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+
+  span {
+    line-height: 66px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    height: 66px;
+    float: left;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.team-points {
+  display: inline-block;
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  position: fixed;
+  top: 297px;
+}
+
+$shift: 11.3%;
+
+.team-red {
+  left: $shift;
+  transform: translateX(-50%);
+}
+
+.team-blue {
+  right: $shift;
+  transform: translateX(50%);
+}
+

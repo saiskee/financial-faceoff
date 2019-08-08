@@ -1,0 +1,20 @@
+#modal {
+    min-height: 200px;
+    background: white;
+    margin: 50px;
+    padding: 30px;
+}
+
+.input-row {
+   display: flex;
+    flex-wrap: wrap;
+}
+
+
+.remove-icon {
+    transform: translateY(17px);
+    margin-left: 20px !important;
+}
+.new-question {
+    float: right;
+}

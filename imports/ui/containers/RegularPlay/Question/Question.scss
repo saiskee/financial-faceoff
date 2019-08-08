@@ -1,0 +1,13 @@
+$padding: 50px;
+
+.question {
+  position: fixed;
+  left: $padding;
+  top: $padding;
+  right: $padding;
+  color: white;
+  padding: 50px;
+  z-index: 99;
+  border-radius: 20px;
+  background: black;
+}

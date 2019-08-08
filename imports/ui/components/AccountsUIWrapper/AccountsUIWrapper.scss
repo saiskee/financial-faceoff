@@ -1,0 +1,13 @@
+.AccountsUIWrapper {
+  a {
+    text-decoration: none !important;
+  }
+  #login-dropdown-list {
+    left: unset !important;
+    right: -1px !important;
+  }
+  #login-buttons .login-close-text {
+    float: right;
+  }
+}
+
