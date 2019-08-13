@@ -18,17 +18,17 @@ import FastResults from "../../components/FastResults/FastResults";
 const styles = {
 	button: {
 		height: '140px',
-	  fontSize: '30px',
+	  	fontSize: '30px',
 	},
 	buttonRed: {
 	  height: '140px',
 	  fontSize: '30px',
-	  color: 'red'
+	  backgroundColor: 'lightcoral'
 	},
 	buttonBlue: {
 		height:'140px',
 		fontSize: '30px',
-		color: 'blue'
+		backgroundColor: 'palegreen'
 	}, 
 	paper: {
 		padding : '50px',
@@ -288,7 +288,10 @@ class Controller extends React.Component{
 			<Grid container spacing={2}>
 				<Grid item xs>
 					<Button
-					style = {styles.button}
+					style = {{...styles.button, 
+						backgroundImage: `
+							linear-gradient( to left, yellow, lawngreen)
+							`}}
 					fullWidth
 					variant={'contained'}
 					onClick={this.advanceQuestion.bind(this, 'previous')}
@@ -298,7 +301,10 @@ class Controller extends React.Component{
 				</Grid>
 				<Grid item xs>
 					<Button
-					style = {styles.button}
+					style = {{...styles.button, 
+					backgroundImage: `
+						linear-gradient( to right, yellow, lawngreen)
+						`}}
 					fullWidth
 					variant={'contained'}
 					onClick={this.advanceQuestion.bind(this, 'next')}
@@ -332,7 +338,9 @@ class Controller extends React.Component{
 			<Grid container spacing={2}>
 			<Grid item xs>
 					<Button
-					style = {styles.button}
+					style = {{...styles.button, 
+					backgroundImage: `radial-gradient(yellow, yellow, red)`,
+					color : 'red'}}
 					fullWidth
 					variant={'contained'}
 					onClick={this.wrongAnswer.bind(this)}
@@ -358,7 +366,7 @@ class Controller extends React.Component{
 					variant={'contained'}
 					onClick={this.awardPoints.bind(this, 'blue')}
 						>
-					Award Blue 
+					Award Green 
 					</Button>
 				</Grid>
 			</Grid>
@@ -394,12 +402,12 @@ class Controller extends React.Component{
 					</Button>
 				</Grid>
 			</Grid>
-		{question_num +1 >= 10 && 
+
 			<Grid container spacing={3}>
 			
 			<Grid item xs>
 					<Button
-					style = {styles.button}
+					style = {{...styles.button, color:'green'}}
 					fullWidth
 					variant={'contained'}
 					onClick={this.fastMoney.bind(this, true)}
@@ -408,12 +416,13 @@ class Controller extends React.Component{
 					</Button>
 				</Grid>
 			</Grid>
-		}
+		
 			<Grid container spacing={3}>
 			
 			<Grid item xs>
 					<Button
-					style = {styles.button}
+					style = {{...styles.button, 
+					border: `solid 2px red`}}
 					fullWidth
 					variant={'contained'}
 					onClick={this.resetGame.bind(this)}

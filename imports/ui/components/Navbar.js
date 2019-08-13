@@ -7,13 +7,15 @@ import AccountsUIWrapper from "./AccountsUIWrapper/AccountsUIWrapper";
 import {Link} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
+    
     flexGrow: 1,
   },
   link: {
-    color: 'white'
+    color: 'gold'
   }
 });
 
@@ -22,7 +24,7 @@ export default () => {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{backgroundColor: 'green'}}>
           <Grid
             justify="space-between" // Add it here :)
             container>

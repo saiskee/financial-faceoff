@@ -33,11 +33,10 @@ class Buzzer extends React.Component {
         </Grid>
         <Grid item xs>
           <Button
-            style={styles.button}
+            style={{...styles.button, backgroundColor: 'lightGreen'}}
             fullWidth
             variant={'contained'}
-            color={'primary'}
-            onClick={this.hitBuzzer.bind(this, 'blue')}>Blue</Button>
+            onClick={this.hitBuzzer.bind(this, 'blue')}>Green</Button>
         </Grid>
       </Grid>
     );

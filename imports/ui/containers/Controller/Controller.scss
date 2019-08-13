@@ -31,10 +31,10 @@
   .panel-front {
 	background: linear-gradient(
 					to bottom,
-					rgb(95, 145, 225),
-					rgb(66, 110, 210) 60%,
-					rgb(39, 72, 153) 70%,
-					rgb(39, 72, 153)
+					rgb(106, 225, 95),
+					rgb(66, 210, 90) 60%,
+					rgb(75, 153, 39) 70%,
+					rgb(35, 107, 28)
 	);
   
 	h2 {
@@ -44,7 +44,7 @@
 					  ellipse 24px 20px,
 					  rgb(23, 33, 70),
 					  rgb(23, 33, 70) 90%,
-					  rgb(116, 146, 228) 95%,
+					  rgb(179,219,142) 95%,
 					  rgb(23, 33, 70),
 					  transparent 30px);
 	}
@@ -54,10 +54,10 @@
   .panel-back {
 	background: linear-gradient(
 					to bottom,
-					rgb(95, 145, 225),
-					rgb(66, 110, 210) 60%,
-					rgb(39, 72, 153) 70%,
-					rgb(39, 72, 153)
+					rgb(106, 225, 95),
+					rgb(66, 210, 90) 60%,
+					rgb(75, 153, 39) 70%,
+					rgb(35, 107, 28)
 	);
 	transform: rotateY(180deg) rotateZ(180deg);
   

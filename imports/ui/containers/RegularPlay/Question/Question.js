@@ -6,15 +6,16 @@ import './Question.css';
 
 const question = (props) => (
   <Modal
+  hideBackdrop = {true}
     open={props.show_question}
     onClose={props.hideQuestion}
   >
-    <div className={'question'}>
+    <div className={'question'} style={{width:'90vw'}}>
       <Fab color="primary" aria-label="Add" onClick={props.hideQuestion} style={{float: 'right'}}>
         <CloseIcon/>
       </Fab>
 
-      <h1>Question: {props.question.text}</h1>
+      <h2>Question: {props.question.text}</h2>
     </div>
 
   </Modal>

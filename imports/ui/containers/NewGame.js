@@ -39,14 +39,14 @@ class NewGame extends React.Component {
 
   formIsComplete = () => {
     const {title, regular_questions, fast_money_questions} = this.state;
-    return (title && regular_questions.length === 10 && fast_money_questions.length === 5);
+    return (title && regular_questions.length > 5 && fast_money_questions.length === 5);
   };
 
   validateForm = () => {
     this.setState({validation_errors: {}}, () => {
         let errors = {};
-        if (this.state.regular_questions.length !== 10) {
-          errors.regular = "You need 10 questions for this field";
+        if (this.state.regular_questions.length <= 5) {
+          errors.regular = "You need atleast 5 questions for this field";
         }
         if (this.state.fast_money_questions.length !== 5) {
           errors.fast = "You need 5 questions for this field"
@@ -112,7 +112,7 @@ class NewGame extends React.Component {
             autoFocus
             fullWidth
           />
-          <h4>Regular Questions <small>(10 are required)</small></h4>
+          <h4>Regular Questions <small>(Atleast 5 are required)</small></h4>
           <TransferList setSelected={this.handleRegularChange.bind(this)}/>
           {this.state.showErrors ? <p className={"warning"}>{this.state.validation_errors.regular || ""}</p> : null}
           <br/>

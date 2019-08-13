@@ -221,6 +221,7 @@ class RegularPlay extends React.Component {
   };
 
   nextQuestion = () => {
+    this.setState({show_question: true})
     this.getNewQuestion(this.question_num + 1);
   };
 
@@ -245,11 +246,11 @@ class RegularPlay extends React.Component {
 
   renderSlideQuestions = () => (
     <div className={"button-group"}>
-      {this.question_num === 9 ? (
+      {/*this.question_num === 9 ? (
         <Button variant={"contained"} onClick={this.startFastMoney}>
           Start Fast Money
         </Button>
-      ) : null}
+      ) : null*/}
     </div>
   );
 
@@ -312,7 +313,7 @@ class RegularPlay extends React.Component {
         </div>
         <div className="team-points team-blue">
           <br />
-          <h1 style={{color:"lightBlue"}}>{this.blue_points}</h1>
+          <h1 style={{color:"lightGreen"}}>{this.blue_points}</h1>
           <h4>Previous Round: {this.blue_points_previous}</h4>
         </div>
 
@@ -327,12 +328,18 @@ class RegularPlay extends React.Component {
             <BuzzerLink game_id={this.game_id} />
           </div>
         )}
+        {this.state.show_question && 
+        <div style={{background: "rgba(0,0,0,0.93)", position: 'fixed', zIndex:'99', 
+          top: '5px', left: '1vw', width:'96vw', color: 'white', borderRadius : '20px', padding: '10px'}}>
 
-        <Question
+          <h2>Question {this.question_num + 1}: {question.text}</h2>
+        </div>
+        }
+        {/* <Question
           question={question}
           hideQuestion={this.hideQuestion}
           show_question={show_question}
-        />
+        /> */}
 
         <h2 style={{ marginTop: 0 }}>Question {this.question_num + 1}</h2>
         {this.renderSlideQuestions()}
