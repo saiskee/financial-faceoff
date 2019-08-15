@@ -1,1 +1,1 @@
-[Financial Faceoff (Live Online)](https://www.financial-faceoff-app.herokuapp.com "Financial Faceoff")
+[Financial Faceoff (Live Online)](http://financial-faceoff-app.herokuapp.com "Financial Faceoff")
