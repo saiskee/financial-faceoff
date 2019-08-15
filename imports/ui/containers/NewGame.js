@@ -39,13 +39,13 @@ class NewGame extends React.Component {
 
   formIsComplete = () => {
     const {title, regular_questions, fast_money_questions} = this.state;
-    return (title && regular_questions.length > 5 && fast_money_questions.length === 5);
+    return (title && regular_questions.length >= 5 && fast_money_questions.length === 5);
   };
 
   validateForm = () => {
     this.setState({validation_errors: {}}, () => {
         let errors = {};
-        if (this.state.regular_questions.length <= 5) {
+        if (this.state.regular_questions.length < 5) {
           errors.regular = "You need atleast 5 questions for this field";
         }
         if (this.state.fast_money_questions.length !== 5) {
