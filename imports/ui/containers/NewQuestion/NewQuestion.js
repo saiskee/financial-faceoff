@@ -189,8 +189,33 @@ class NewQuestion extends React.Component {
           open={jsonInputOpen}
           onClose={this.handleJSONClose}
         >
-          <div id={"modal"}>
+          <div id={"modal"} style={{whiteSpace:'pre-wrap'}}>
             <h1>Import Questions JSON</h1>
+            Please format the JSON as follows: <br/>
+            <code style={{
+              padding: '20px',
+              display: 'block',
+              border: '1px solid #999',
+              backgroundColor: "lightgray",
+              overflow: "auto",
+              height: "100px"
+            }}>{`{ 
+              "Questions": [
+                {
+                  "question": "This is a sample question?",
+                  "answers": [
+                    {
+                      "answer": "This is a sample answer",
+                      "responses" : 70 
+                    }, {
+                      "answer": "This is another sample answer",
+                      "responses" : 42
+                    }
+                  ]
+                }
+                ]
+              }`}
+            </code>
             <ValidatorForm
               ref="form2"
               onSubmit={this.handleJSONSubmit}

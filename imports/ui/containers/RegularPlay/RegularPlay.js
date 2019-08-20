@@ -335,23 +335,11 @@ class RegularPlay extends React.Component {
           <h2>Question {this.question_num + 1}: {question.text}</h2>
         </div>
         }
-        {/* <Question
-          question={question}
-          hideQuestion={this.hideQuestion}
-          show_question={show_question}
-        /> */}
 
         <h2 style={{ marginTop: 0 }}>Question {this.question_num + 1}</h2>
         {this.renderSlideQuestions()}
         <span className={"fued-points"}>{sum}</span>
         {!objectEmpty(question) ? (
-          /*<GameBoard
-            key={key} // new key remounts the component
-            sendSumValue={(sum) => this.setState({sum})}
-            showingAnswer={[0]}
-            answers={question.answers}
-            {...this.props}
-          /> */
           <div className={"board"} key={key}>
             <Grid container>
               <Grid item xs={6}>

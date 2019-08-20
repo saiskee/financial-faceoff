@@ -29,13 +29,13 @@ class Home extends React.Component {
         <Grid item sm={6} key={i}>
           <Paper style={styles.paper}>
             {!isMobile && 
-            <Button onClick={() => {
+            <Button color="primary" onClick={() => {
               localStorage.removeItem(game._id);
               this.props.history.push(`/games/${game._id}/regular/0`)}}>Play {game.title}
             </Button>}
-            <Button variant="contained" color={"primary"} style={{float:'left'}} onClick={()=> {this.props.history.push(
+            <Button variant="contained" style={{float:'left'}} onClick={()=> {this.props.history.push(
           `/games/${game._id}/controller`)}
-        }>(Controller for {game.title})</Button>
+        }>Controller</Button>
           </Paper>
         </Grid>
       )
@@ -49,7 +49,7 @@ class Home extends React.Component {
         <Paper style={styles.paper}>
           <Grid container spacing={6}>
             <Grid item xs={12}>
-              <h1 style={styles.h1}>Family Fued Home</h1>
+              <h1 style={styles.h1}>Welcome to <span style={{color:'#013220'}}>Financial Faceoff!</span></h1>
               <h2>My Games</h2>
             </Grid>
             {games.length > 0 ? games: <h3>You havent created any games. Create one now!</h3>}
