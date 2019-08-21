@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button/index";
 import {withRouter} from "react-router";
 import withAudio from "../hoc/withAudio";
 import Paper from "@material-ui/core/Paper";
-import "./Home.css"
 import {isMobile} from 'react-device-detect';
 
 const styles = {
