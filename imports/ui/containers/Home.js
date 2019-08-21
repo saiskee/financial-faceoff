@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button/index";
 import {withRouter} from "react-router";
 import withAudio from "../hoc/withAudio";
 import Paper from "@material-ui/core/Paper";
+import "./Home.css"
 import {isMobile} from 'react-device-detect';
 
 const styles = {
@@ -27,7 +28,36 @@ class Home extends React.Component {
     return this.props.games.map((game, i) => {
       return (
         <Grid item sm={6} key={i}>
-          <Paper style={styles.paper}>
+          <div className="fued-result">
+          <div
+              className="flip-panel"
+              style={{transform: 'rotateX(180deg)'}}
+            >
+              <style>
+                {`
+                .panel-answer:hover{
+                  
+                  color: darkgreen;
+                }
+                .points:hover{
+                  color:purple
+                }
+                `}
+
+              </style>
+              <div className="panel-back">
+              <span className={"panel-answer"}
+              onClick={() => {
+                localStorage.removeItem(game._id);
+                this.props.history.push(`/games/${game._id}/regular/0`)}}>Play {game.title}</span>
+                <span className={"points"}
+                onClick={()=> {this.props.history.push(
+                  `/games/${game._id}/controller`)}
+                }>Controller</span>
+              </div>
+              </div>
+          </div>
+          {/* <Paper style={styles.paper}>
             {!isMobile && 
             <Button color="primary" onClick={() => {
               localStorage.removeItem(game._id);
@@ -36,7 +66,7 @@ class Home extends React.Component {
             <Button variant="contained" style={{float:'left'}} onClick={()=> {this.props.history.push(
           `/games/${game._id}/controller`)}
         }>Controller</Button>
-          </Paper>
+          </Paper> */}
         </Grid>
       )
     })
@@ -52,7 +82,7 @@ class Home extends React.Component {
               <h1 style={styles.h1}>Welcome to <span style={{color:'#013220'}}>Financial Faceoff!</span></h1>
               <h2>My Games</h2>
             </Grid>
-            {games.length > 0 ? games: <h3>You havent created any games. Create one now!</h3>}
+            {games.length > 0 ? games: <h3 style={{color:'darkred', paddingLeft:'10px'}}>You havent created any games. Create one now!</h3>}
           </Grid>
         </Paper>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
-import "./RegularPlay.css";
+import "./RegularPlay.css"
 import { withRouter } from "react-router";
 import Grid from "@material-ui/core/Grid";
 import * as _ from "lodash";
