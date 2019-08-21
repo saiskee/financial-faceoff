@@ -1,8 +1,8 @@
+![Financial Faceoff Logo](thumbnails/FFlogo2.png)
 # Welcome to Financial Faceoff!
 ### A Family Feud Style Game recreated using React
----
-![Financial Faceoff Logo](thumbnails/FFlogo2.png)
-_The game is online at[Financial Faceoff (Live Online)](http://financial-faceoff-app.herokuapp.com "Financial Faceoff")_
+
+_The game is online at [Financial Faceoff (Live Online)](http://financial-faceoff-app.herokuapp.com "Financial Faceoff")_
 
 ## Features
 * Survey questions for games can be created quickly from JSON or even in-game
@@ -15,6 +15,13 @@ _The game is online at[Financial Faceoff (Live Online)](http://financial-faceoff
 3. Run `yarn` in the project directory to install dependencies
 4. Once dependencies are installed, run `yarn start`
 5. Navigate to `localhost:3000` on your browser to access the game!
+
+###Pictures
+
+![In Game Display](thumbnails/gamescreenJPG.JPG)
+_Presentation view of Game_
+![Controller Display](thumbnails/controllerdisplay.gif)
+_The Controller view fro the Game Master, available on mobile devices as well!_
 
 
 
