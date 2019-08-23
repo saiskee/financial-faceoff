@@ -62,8 +62,11 @@
   transform: rotateY(180deg) rotateZ(180deg);
 
   span {
-    line-height: 52px;
+    //line-height: 52px;
     margin: 0;
+  }
+  .points{
+    line-height: 52px;
   }
 }
 
@@ -89,8 +92,15 @@
   float: right;
 }
 
+.panel-answer::-webkit-scrollbar{
+  width:0px;
+}
 .panel-answer {
   float: left;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 90%;
+  height: 100%;
 }
 
 .fued-points {

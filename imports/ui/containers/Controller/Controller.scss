@@ -38,7 +38,7 @@
 	);
   
 	h2 {
-	  line-height: 52px;
+	  //line-height: 52px;
 	  margin: 0;
 	  background: radial-gradient(
 					  ellipse 24px 20px,
@@ -62,7 +62,7 @@
 	transform: rotateY(180deg) rotateZ(180deg);
   
 	span {
-	  line-height: 52px;
+	  //line-height: 52px;
 	  margin: 0;
 	}
   }
@@ -88,9 +88,15 @@
   .points {
 	float: right;
   }
-  
+  .panel-answer::-webkit-scrollbar{
+	  width:0px;
+  }
   .panel-answer {
 	float: left;
+	  overflow-x: hidden;
+	  overflow-y: scroll;
+	  width: 90%;
+	  height: 100%;
   }
   
   .fued-points {
@@ -161,5 +167,4 @@
   }
 
 
-  
   

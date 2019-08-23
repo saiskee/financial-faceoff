@@ -338,12 +338,12 @@ class RegularPlay extends React.Component {
         {this.state.show_question && 
         <div style={{background: "rgba(0,0,0,0.93)", position: 'fixed', zIndex:'99', 
           top: '5px', left: '1vw', width:'96vw', color: 'white', borderRadius : '20px', padding: '10px'}}>
-
+          {console.log(this.question_num+1)}
           <h2>Question {this.question_num + 1}: {question.text}</h2>
         </div>
         }
 
-        <h2 style={{textAlignLast: 'center', marginTop: 0 }}>Question : {question.text}</h2>
+        <h2 style={{textAlignLast: 'center', marginTop: 0 }}>Question {this.question_num +1}: {question.text}</h2>
         {this.renderSlideQuestions()}
         <span className={"fued-points"}>{sum}</span>
         {!objectEmpty(question) ? (

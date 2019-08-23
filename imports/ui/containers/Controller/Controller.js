@@ -4,16 +4,15 @@ import {Meteor} from "meteor/meteor";
 import {withRouter} from "react-router";
 import Grid from "@material-ui/core/Grid";
 import { red } from '@material-ui/core/colors';
-import { borderRadius } from '@material-ui/system';
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField/index";
+import "./Controller.css"
 import * as _ from 'lodash';
 import FormControl from "@material-ui/core/FormControl/index";
 import Radio from "@material-ui/core/Radio/index";
 import FormControlLabel from "@material-ui/core/FormControlLabel/index";
 import FormLabel from "@material-ui/core/FormLabel/index";
 import RadioGroup from "@material-ui/core/RadioGroup/index";
-import FastResults from "../../components/FastResults/FastResults";
 
 const styles = {
 	button: {
@@ -280,8 +279,7 @@ class Controller extends React.Component{
 							<h2>{index + 1}</h2>
 						</div>
 						<div className="panel-back">
-							<span className={'panel-answer'} style={{overflowX: 'hidden', overflowY: 'scroll', scrollBarWidth: '0px',
-								width: '90%', height:'100%'}}>{ans.answer}</span><span
+							<span className={'panel-answer'}>{ans.answer}</span><span
 							className={'points'}>{ans.responses}</span>
 						</div>
 						</div>
@@ -320,28 +318,28 @@ class Controller extends React.Component{
 
 				</Grid>
 			</Grid>
-			<Grid container spacing={3}>
-				<Grid item xs>
-					<Button
-					style = {styles.button}
-					fullWidth
-					variant={'contained'}
-					onClick={this.showQuestion.bind(this, true)}
-						>
-					Show Question
-					</Button>
-				</Grid>
-				<Grid item xs>
-					<Button
-					style = {styles.button}
-					fullWidth
-					variant={'contained'}
-					onClick={this.showQuestion.bind(this, false)}
-						>
-					Hide Question
-					</Button>
-				</Grid>
-			</Grid>
+			{/*<Grid container spacing={3}>*/}
+				{/*<Grid item xs>*/}
+					{/*<Button*/}
+					{/*style = {styles.button}*/}
+					{/*fullWidth*/}
+					{/*variant={'contained'}*/}
+					{/*onClick={this.showQuestion.bind(this, true)}*/}
+						{/*>*/}
+					{/*Show Question*/}
+					{/*</Button>*/}
+				{/*</Grid>*/}
+				{/*<Grid item xs>*/}
+					{/*<Button*/}
+					{/*style = {styles.button}*/}
+					{/*fullWidth*/}
+					{/*variant={'contained'}*/}
+					{/*onClick={this.showQuestion.bind(this, false)}*/}
+						{/*>*/}
+					{/*Hide Question*/}
+					{/*</Button>*/}
+				{/*</Grid>*/}
+			{/*</Grid>*/}
 			<Grid container spacing={2}>
 			<Grid item xs>
 					<Button
