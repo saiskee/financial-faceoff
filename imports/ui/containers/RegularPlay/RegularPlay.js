@@ -4,13 +4,13 @@ import "./RegularPlay.css"
 import { withRouter } from "react-router";
 import Grid from "@material-ui/core/Grid";
 import * as _ from "lodash";
-import Button from "@material-ui/core/Button";
 import withAudio from "../../hoc/withAudio";
-import Question from "./Question/Question";
 import BuzzerLink from "./BuzzerLink/BuzzerLink";
 import BuzzerPopup from "./BuzzerPopup/BuzzerPopup";
 import { objectEmpty } from "../../components/utils";
 import WrongAnswer from "./WrongAnswer/WrongAnswer";
+// let ReactFitText = require('react
+import ReactFitText from "../../components/ReactFitText"
 
 class RegularPlay extends React.Component {
   state = {
@@ -65,8 +65,11 @@ class RegularPlay extends React.Component {
               <div className="panel-front">
                 <h2>{answer.index + 1}</h2>
               </div>
-              <div className="panel-back">
-                <span className={"panel-answer"}>{answer.answer}</span>
+              <div className="panel-back" >
+                <div className={"panel-answer"} style={{overflowX: 'hidden', overflowY: 'scroll', scrollBarWidth: '0px',
+                width: '90%', height:'100%'}}>
+                  {answer.answer}
+                </div>
                 <span className={"points"}>{answer.responses}</span>
               </div>
             </div>
@@ -149,6 +152,15 @@ class RegularPlay extends React.Component {
           localStorage.removeItem("redTeamFastMoney");
           localStorage.removeItem("recentQuestion");
           localStorage.removeItem("blueTeamFastMoney");
+          this.setState({
+            buzzer_side: null,
+            can_buzz: true,
+            show_question: false,
+            wrong_answers: 0,
+            show_wrong_answer: false,
+            include_current_round: false,
+            showQR: false,
+            fastMoneyPlaying: false,});
           this.props.history.push(`/games/${this.game_id}/regular/0`);
         }
       }
@@ -221,7 +233,6 @@ class RegularPlay extends React.Component {
   };
 
   nextQuestion = () => {
-    this.setState({show_question: true})
     this.getNewQuestion(this.question_num + 1);
   };
 
@@ -246,11 +257,6 @@ class RegularPlay extends React.Component {
 
   renderSlideQuestions = () => (
     <div className={"button-group"}>
-      {/*this.question_num === 9 ? (
-        <Button variant={"contained"} onClick={this.startFastMoney}>
-          Start Fast Money
-        </Button>
-      ) : null*/}
     </div>
   );
 
@@ -305,6 +311,7 @@ class RegularPlay extends React.Component {
       question_num: this.question_num
     });
     return (
+
       <div className={"RegularPlay"}>
         <div className="team-points team-red">
           <br />
@@ -336,7 +343,7 @@ class RegularPlay extends React.Component {
         </div>
         }
 
-        <h2 style={{ marginTop: 0 }}>Question {this.question_num + 1}</h2>
+        <h2 style={{textAlignLast: 'center', marginTop: 0 }}>Question : {question.text}</h2>
         {this.renderSlideQuestions()}
         <span className={"fued-points"}>{sum}</span>
         {!objectEmpty(question) ? (

@@ -1,20 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { Meteor } from "meteor/meteor";
-import TextField from "@material-ui/core/TextField/index";
-import * as _ from "lodash";
-import FormControl from "@material-ui/core/FormControl/index";
-import Radio from "@material-ui/core/Radio/index";
-import FormControlLabel from "@material-ui/core/FormControlLabel/index";
-import FormLabel from "@material-ui/core/FormLabel/index";
-import RadioGroup from "@material-ui/core/RadioGroup/index";
-import { Button } from "@material-ui/core/index";
-import Grid from "@material-ui/core/Grid/index";
-import Timer from "../../components/Timer";
 import FastResults from "../../components/FastResults/FastResults";
 import "./FastMoney.css";
 import withAudio from "../../hoc/withAudio";
 import Paper from "@material-ui/core/Paper";
+import * as _ from "lodash";
 
 const deepCopy = data => JSON.parse(JSON.stringify(data));
 
@@ -41,7 +32,9 @@ class FastMoney extends React.Component {
     },
     show_results: true,
     fastMoneyPlaying: true,
-    round_num: this.round_num
+    round_num: this.round_num,
+    question_num: 0,
+    current_question: ""
   };
 
   get game_id() {
@@ -52,53 +45,81 @@ class FastMoney extends React.Component {
     return parseInt(this.props.match.params.round_num);
   }
 
-  // getFastQuestion = () => {
-  //   Meteor.call('join_questions', this.game_id, (error, result) => {
-  //     if (error) console.log(error);
-  //     else {
-  //       let data = result[0]; // single element array
-  //       data.fast_money = _.map(data.fast_money, q => (
-  //         {...q, input: "", closest_answer: "-1"}
-  //       )); // -1 is no close answer
-  //       this.setState({
-  //         1: deepCopy(data),
-  //         2: deepCopy(data)  // round 1 and round 2 in state
-  //       });
-  //     }
-  //   });
-  // };
+  getFastQuestion = () => {
+    Meteor.call('join_questions', this.game_id, (error, result) => {
+      if (error) console.log(error);
+      else {
+        let data = result[0]; // single element array
+        data.fast_money = _.map(data.fast_money, q => (
+            {...q, input: "", closest_answer: "-1"}
+        )); // -1 is no close answer
+        this.setState({
+          1: deepCopy(data),
+          2: deepCopy(data),  // round 1 and round 2 in state
 
+        });
+        this.setState({current_question: this.state[this.round_num].fast_money[this.state.question_num].text})
+      }
+    });
+  };
+
+  get question_num() {
+    return this.state.question_num;
+  }
   componentDidMount() {
+    this.getFastQuestion();
+
+    this.props.pause();
     this.interval = setInterval(() => {
       Meteor.call("toController", this.game_id, { ...this.state });
-    }, 1000);
+    }, 500);
 
     Streamy.on(this.game_id + "toGame", data => {
       if (data.command.hasOwnProperty("round1")) {
         this.setState({ 1: deepCopy(data.command.round1) });
       }
       if (data.command.hasOwnProperty("round2")) {
+        console.log(data.command.round2);
         this.setState({ 2: deepCopy(data.command.round2) });
       }
-      if (data.command.hasOwnProperty("roundToSwitchTo")) {
+      else if (data.command.hasOwnProperty("roundToSwitchTo")) {
         this.props.history.push(
           `/games/${this.game_id}/fast/${data.command.roundToSwitchTo}`
         );
         this.state.round_num = this.round_num;
       }
-      if (data.command.hasOwnProperty("backToGame")) {
+      else if (data.command.hasOwnProperty("backToGame")) {
         localStorage.setItem("redTeamFastMoney", data.command.round1Scores);
         localStorage.setItem("blueTeamFastMoney", data.command.round2Scores)
         this.props.history.push(`/games/${this.game_id}/regular/${localStorage.getItem("recentQuestion") ? localStorage.getItem("recentQuestion") : 0}`);
       }
-      if (data.commmand.hasOwnProperty("showFinalScores")) {
+      else if (data.command.hasOwnProperty("showFinalScores")) {
         this.props.history.push(`/games/${this.game_id}/finalScores`);
+      }
+      else if (data.command.hasOwnProperty("revealAnswer")) {
+        console.log(this.child);
+        data.command.revealAnswer === "next"
+            ? this.child.revealNextAnswer()
+            : this.child.revealPreviousAnswer()
+      }
+      else if (data.command.hasOwnProperty("advanceQuestion")){
+        if (data.command.advanceQuestion == 'next') {
+          this.setState({question_num: this.state.question_num + 1})
+        }else{
+          this.setState({question_num : this.state.question_num - 1 >= 0 ? this.state.question_num -1 : 0})
+        }
+        try{
+          this.setState({current_question: this.state[this.round_num].fast_money[this.state.question_num].text});
+        } catch(error){
+
+        }
       }
       this.forceUpdate();
     });
   }
 
   componentWillUnmount() {
+
     clearInterval(this.interval);
     Streamy.off(this.game_id + "toGame");
   }
@@ -126,10 +147,13 @@ class FastMoney extends React.Component {
     return (
       <Paper className={"FastMoney"} style={styles.paper}>
         <FastResults
+            onRef={ref => {this.child = ref}}
           handleClose={this.handleClose}
           show_results={this.state.show_results}
           round_two={this.round_num === 2 ? this.state[2].fast_money : []}
           round_one={this.state[1].fast_money}
+            question_num={this.state.question_num}
+            current_question={this.state.current_question}
           {...this.props}
         />
       </Paper>

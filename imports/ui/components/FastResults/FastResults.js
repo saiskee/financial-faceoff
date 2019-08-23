@@ -1,10 +1,7 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid/index";
 import './FastResults.css';
-import {Button} from "@material-ui/core";
 import Modal from '@material-ui/core/Modal/index';
-import Fab from "@material-ui/core/Fab";
-import CloseIcon from '@material-ui/icons/Close';
 import {withRouter} from "react-router";
 import Timer from "../../components/Timer";
 
@@ -22,7 +19,7 @@ class FastResults extends React.Component {
   state = {
     round_one: [],
     round_two: [],
-    show_index: -1
+    show_index: -1,
   };
 
   renderRound = (round, is_round_two = false) => (
@@ -61,6 +58,9 @@ class FastResults extends React.Component {
     return this.state.show_index;
   }
 
+  get question_num() {
+    return this.props.question_num;
+  }
   get total_points() {
     const all_rounds = [...this.state.round_one, ...this.state.round_two];
     return all_rounds.reduce((prev, next, i) => {
@@ -72,12 +72,16 @@ class FastResults extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyPress)
-   
+
+    document.addEventListener('keydown', this.handleKeyPress);
+
+    this.props.onRef(this);
+
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyPress);
+    this.props.onRef(undefined);
   }
 
   playSoundEffect = () => {
@@ -92,6 +96,19 @@ class FastResults extends React.Component {
       }
     }
   };
+
+  revealNextAnswer = () => {
+    if (!this.props.show_results) return;
+    if (this.state.show_index < (this.state.round_one.length + this.state.round_two.length)*2 -1){
+      this.setState(state => ({show_index: state.show_index + 1}), this.playSoundEffect);
+    }
+  }
+
+  revealPreviousAnswer = () => {
+    if (this.state.show_index < (this.state.round_one.length + this.state.round_two.length)*2 - 1) {
+      this.setState(state => ({show_index: state.show_index + 1}), this.playSoundEffect)
+    }
+  }
 
   handleKeyPress = event => {
     if (!this.props.show_results) return;
@@ -140,12 +157,10 @@ class FastResults extends React.Component {
           style = {{float: "right"}}
           round_num={this.round_num}
           count={this.round_num === 1 ? 200 : 250}/>
-            {/* <Fab color="primary" aria-label="Add" onClick={this.props.handleClose} style={{float: 'right'}}>
-              <CloseIcon/>
-            </Fab> */}
 
             <h1>Fast Money</h1>
-            <h3>Round #{this.round_num}</h3>
+            <h3>Round #{this.round_num}, Question #{this.question_num+1}:</h3>
+            <h2>{this.current_question}</h2>
           </div>
           <Grid container>
             <Grid item xs={6}>
@@ -170,6 +185,12 @@ class FastResults extends React.Component {
         </div>
       </Modal>
     );
+  }
+
+  get current_question() {
+    return this.props.current_question;
+
+
   }
 }
 

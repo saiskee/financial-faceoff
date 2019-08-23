@@ -61,11 +61,10 @@ class Controller extends React.Component{
 			questions: [],
 			title: ""
 		},
+		show_one_results: false,
+		show_two_results: false,
 		show_results: false
 	}
-	action = (command) => {
-		Meteor.call('toGame', this.game_id, command);
-	};
 
 	showAnswer = (answerIdx) => {
 		Meteor.call('toGame', this.game_id, {showAnswer: answerIdx});
@@ -100,12 +99,16 @@ class Controller extends React.Component{
 		Meteor.call('toGame', this.game_id, {advanceQuestion: direction});
 	}
 
+	revealAnswer = (direction) =>{
+		Meteor.call('toGame', this.game_id, {revealAnswer: direction});
+	}
+
 	componentDidMount(){
 		Streamy.on(this.game_id +"toControl", (data) =>{
-			console.log(data);
+			// console.log(data);
 			this.state.question  = data.command.question ? data.command.question.text : this.state.question;
 			this.state.answers = data.command.answers ? data.command.question.answers : this.state.answers;
-			this.state.question_num = data.command.question_num ? data.command.question_num : this.state.question_num;
+			this.state.question_num = data.command.hasOwnProperty('question_num') ? data.command.question_num : this.state.question_num;
 			if (data.command.fastMoneyPlaying && !this.state.fastMoney){
 				this.state.fastMoney = data.command.fastMoneyPlaying;
 				this.getFastQuestion();
@@ -126,7 +129,6 @@ class Controller extends React.Component{
 	}
 
 	resetGame(){
-		console.log("RESETTING GAME");
 		Meteor.call('toGame', this.game_id, {reset: true})
 	}
 
@@ -223,10 +225,12 @@ class Controller extends React.Component{
 	  }
 
 	  handleOpen = () => {
+		  {this.round_num === 1 ? this.state.show_one_results = true : this.state.show_two_results = true;}
 		  Meteor.call('toGame', this.game_id, {round1: this.state[1], round2: this.state[2]})
 	  }
 
 	  switchRound = (roundNum) => {
+	  	this.setState({show_one_results: false, show_two_results: false});
 		Meteor.call('toGame', this.game_id, {roundToSwitchTo: roundNum});
 	  }
 
@@ -276,7 +280,8 @@ class Controller extends React.Component{
 							<h2>{index + 1}</h2>
 						</div>
 						<div className="panel-back">
-							<span className={'panel-answer'}>{ans.answer}</span><span
+							<span className={'panel-answer'} style={{overflowX: 'hidden', overflowY: 'scroll', scrollBarWidth: '0px',
+								width: '90%', height:'100%'}}>{ans.answer}</span><span
 							className={'points'}>{ans.responses}</span>
 						</div>
 						</div>
@@ -288,29 +293,31 @@ class Controller extends React.Component{
 			<Grid container spacing={2}>
 				<Grid item xs>
 					<Button
-					style = {{...styles.button, 
-						backgroundImage: `
+						style = {{...styles.button,
+							backgroundImage: `
 							linear-gradient( to left, yellow, lawngreen)
 							`}}
-					fullWidth
-					variant={'contained'}
-					onClick={this.advanceQuestion.bind(this, 'previous')}
-						>
-					Previous Question
+						fullWidth
+						variant={'contained'}
+						onClick={this.advanceQuestion.bind(this, 'previous')}
+					>
+						Previous Question
 					</Button>
 				</Grid>
 				<Grid item xs>
+
 					<Button
-					style = {{...styles.button, 
-					backgroundImage: `
+						style = {{...styles.button,
+							backgroundImage: `
 						linear-gradient( to right, yellow, lawngreen)
 						`}}
-					fullWidth
-					variant={'contained'}
-					onClick={this.advanceQuestion.bind(this, 'next')}
-						>
-					Next Question
+						fullWidth
+						variant={'contained'}
+						onClick={this.advanceQuestion.bind(this, 'next')}
+					>
+						Next Question
 					</Button>
+
 				</Grid>
 			</Grid>
 			<Grid container spacing={3}>
@@ -437,14 +444,17 @@ class Controller extends React.Component{
 	}
 
 	/** FAST MONEY ROUND  */
-	const round_one = this.state[1].fast_money.map((q, i) => this.renderQuestionInput(q, i, 1));
+	const round_one = this.state[1].fast_money.map((q, i) => {if (i===this.state.question_num) {return this.renderQuestionInput(q, i, 1)}});
     const round_two = this.round_num === 2
-      ? this.state[2].fast_money.map((q, i) => this.renderQuestionInput(q, i, 2))
+      ? this.state[2].fast_money.map((q, i) => {if (i===this.state.question_num) {return this.renderQuestionInput(q, i, 2)}})
       : null;
     return (
       <Paper className={'FastMoney'} style={styles.paper}>
 		  <div>
-		  
+
+
+			  {/*Timer Control Buttons*/}
+
 		  <Button
             variant="contained"
 			style={{float: 'right'}}
@@ -468,10 +478,25 @@ class Controller extends React.Component{
         
 		  </div>
         <h1>Fast Money: {this.round_num === 1 ? "Red Team" : "Blue Team"}</h1>
-		<p>{this.round_num === 1 ? "Type the answers mentioned below, and choose the closest answer" : "Type the answers mentioned in the second column, and choose the closest answer"}</p>
+		<p>{this.round_num === 1 ? "Type the answer mentioned below, and choose the closest answer" : "Type the answers mentioned in the second column, and choose the closest answer"}</p>
         <br/>
         <br/>
-
+		  {this.state.question_num > 0 &&
+		  <Button
+			  style={{backgroundImage: `linear-gradient( to left, yellow, lawngreen)`}}
+			  variant={'contained'}
+			  onClick={this.advanceQuestion.bind(this, 'previous')}
+		  >Previous Question
+		  </Button>
+		  }
+		  {this.state.question_num < 4 &&
+		  <Button
+			  style={{backgroundImage: `linear-gradient( to right, yellow, lawngreen)`}}
+			  variant={'contained'}
+			  onClick={this.advanceQuestion.bind(this, 'next')}
+		  >Next Question
+		  </Button>
+		  }
         <Grid container>
           <Grid item xs={6}>
             {round_one}
@@ -480,12 +505,27 @@ class Controller extends React.Component{
             {round_two}
           </Grid>
         </Grid>
-        <Button
-          variant={'contained'}
-          color={'primary'}
-          fullWidth
-          onClick={this.handleOpen}>Show Round {this.round_num} Results</Button>
-		{this.round_num === 1
+		  {this.state.question_num >= 4 &&
+		  <Button
+			  variant={'contained'}
+			  color={'primary'}
+			  fullWidth
+			  onClick={this.handleOpen}>Show Round {this.round_num} Results</Button>
+		  }
+		  {
+			  ((this.round_num === 1 && this.state.show_one_results) || (this.round_num === 2 && this.state.show_two_results)) ?
+
+			  <Button
+			  variant={"contained"}
+			  style={{float: 'right', backgroundImage: 'linear-gradient(to right, rgb(241, 39, 17), rgb(245, 175, 25))'}}
+			  onClick={this.revealAnswer.bind(this, 'next')}
+			  >
+			  Reveal Next Answer
+			  </Button>
+			 : (<span></span>)
+
+		  }
+		  {this.round_num === 1
           ? <Button
             variant="contained"
             style={{float: 'left'}}
