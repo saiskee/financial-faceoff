@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button/index";
 import {withRouter} from "react-router";
 import withAudio from "../hoc/withAudio";
 import Paper from "@material-ui/core/Paper";
+import "./Home.css";
 
 const styles = {
   home: {
@@ -33,6 +34,8 @@ class Home extends React.Component {
             >
               <style>
                 {`
+                .panel-answer{
+                  width: auto;}
                 .panel-answer:hover{
                   
                   color: darkgreen;
