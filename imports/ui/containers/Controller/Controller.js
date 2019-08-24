@@ -13,6 +13,7 @@ import Radio from "@material-ui/core/Radio/index";
 import FormControlLabel from "@material-ui/core/FormControlLabel/index";
 import FormLabel from "@material-ui/core/FormLabel/index";
 import RadioGroup from "@material-ui/core/RadioGroup/index";
+import {Speaker, ArrowLeft, ArrowRight, } from "@material-ui/icons";
 
 const styles = {
 	button: {
@@ -213,6 +214,9 @@ class Controller extends React.Component{
 		)
 	  };
 
+	toggleAudio = () => {
+		Meteor.call('toGame', this.game_id, {toggleAudio: true})
+	}
 	  handleInputChange = (i, round) => event => {
 		const round_data = {...this.state[round]};
 		round_data.fast_money[i].input = event.target.value;
@@ -299,6 +303,7 @@ class Controller extends React.Component{
 						variant={'contained'}
 						onClick={this.advanceQuestion.bind(this, 'previous')}
 					>
+						<ArrowLeft/>
 						Previous Question
 					</Button>
 				</Grid>
@@ -314,6 +319,7 @@ class Controller extends React.Component{
 						onClick={this.advanceQuestion.bind(this, 'next')}
 					>
 						Next Question
+						<ArrowRight/>
 					</Button>
 
 				</Grid>
@@ -383,7 +389,7 @@ class Controller extends React.Component{
 					variant={'contained'}
 					onClick={this.clearErrors.bind(this)}
 						>
-					Clear X's
+					Reset X's
 					</Button>
 				</Grid>
 				<Grid item xs>
@@ -404,6 +410,17 @@ class Controller extends React.Component{
 					onClick={this.showQRCode.bind(this, false)}
 						>
 					Hide QR
+					</Button>
+				</Grid>
+				<Grid item xs>
+					<Button
+						style = {styles.button}
+						fullWidth
+						variant={'contained'}
+						onClick={this.toggleAudio}
+					>
+						<Speaker/>
+						Toggle Audio
 					</Button>
 				</Grid>
 			</Grid>

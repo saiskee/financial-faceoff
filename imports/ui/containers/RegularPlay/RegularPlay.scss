@@ -119,10 +119,36 @@
 
 }
 
-.bottom-right-controls {
+.top-right-controls {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 190px;
+  top: 20px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+
+  span {
+    line-height: 66px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    height: 66px;
+    float: left;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.top-left-controls {
+  position: fixed;
+  left: 20px;
+  top: 20px;
   padding: 10px;
   color: white;
   text-align: center;

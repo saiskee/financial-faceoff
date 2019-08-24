@@ -6,8 +6,12 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = {
   button: {
-    height: '180px',
-    fontSize: '50px'
+    height: '100vh',
+    width: '100vw',
+    fontSize: '50px',
+    position: 'fixed',
+    borderRadius: '10px'
+
   }
 };
 
@@ -20,26 +24,29 @@ class Buzzer extends React.Component {
     return this.props.match.params.game_id;
   }
 
+  get team_name(){
+    return this.props.match.params.team_name;
+  }
+
   render() {
-    return (
-      <Grid container spacing={3}>
-        <Grid item xs>
+    if (this.team_name === 'red'){
+      return (
+        <Button
+          style={styles.button}
+          fullWidth
+          variant={'contained'}
+          color={'secondary'}
+          onClick={this.hitBuzzer.bind(this, 'red')}>Red</Button>
+      )
+    }else if (this.team_name === 'green'){
+      return(
           <Button
-            style={styles.button}
-            fullWidth
-            variant={'contained'}
-            color={'secondary'}
-            onClick={this.hitBuzzer.bind(this, 'red')}>Red</Button>
-        </Grid>
-        <Grid item xs>
-          <Button
-            style={{...styles.button, backgroundColor: 'lightGreen'}}
-            fullWidth
-            variant={'contained'}
-            onClick={this.hitBuzzer.bind(this, 'blue')}>Green</Button>
-        </Grid>
-      </Grid>
-    );
+              style={{...styles.button, backgroundColor: 'lightGreen', }}
+              fullWidth
+              variant={'contained'}
+              onClick={this.hitBuzzer.bind(this, 'blue')}>Green</Button>
+      )
+    }
   }
 }
 

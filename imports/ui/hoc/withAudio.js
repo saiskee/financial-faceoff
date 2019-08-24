@@ -9,7 +9,8 @@ const withAudio = (WrappedComponent) => {
   return class extends React.Component {
     state = {
       song_url: "full-theme",
-      show_player: true
+      show_player: true,
+      muted: true,
     };
 
     constructor(props) {
@@ -21,7 +22,12 @@ const withAudio = (WrappedComponent) => {
       return this.player.audioEl;
     }
 
+    toggleAudio = () => {
+      this.setState({muted: !this.state.muted});
+    }
+
     playAudioTrack = (track_name) => {
+      if (!this.state.muted){
       this.setState({song_url: track_name});
       this.player.audioEl.currentTime = 0;
       const promise = this.player.audioEl.play();
@@ -33,7 +39,7 @@ const withAudio = (WrappedComponent) => {
           // Autoplay was prevented.
           // Show a "Play" button so that user can start playback.
         });
-      }
+      }}
     };
 
     playBuzzIn = () => {
@@ -119,8 +125,10 @@ const withAudio = (WrappedComponent) => {
           <div className="audio-wrapper">
             <ReactAudioPlayer
               src={'/'+this.state.song_url+'.m4a'}
-              controls
               autoPlay
+              style={{opacity:0.08}}
+              controls
+
               ref={(element) => { this.player = element; }}
             />
           </div>
@@ -143,6 +151,7 @@ const withAudio = (WrappedComponent) => {
             toggleShow={this.toggleShow}
             hidePlayer={this.hidePlayer}
             showPlayer={this.showPlayer}
+            toggleAudio={this.toggleAudio}
             {...this.props} />
         </Fragment>
       );

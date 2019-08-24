@@ -69,7 +69,7 @@ class App extends React.Component {
               </Route>
             {/*Buzzer doesnt require user to be logged in*/}
             <Route path="/games/:game_id/controller" component={Controller}/>
-            <Route path="/games/:game_id/buzzer" component={Buzzer}/>
+            <Route path="/games/:game_id/buzzer/:team_name" component={Buzzer}/>
             <Route path="/" component={() => <EverythingButBuzzer {...this.props}/>}/>
           </Switch>
       </div>

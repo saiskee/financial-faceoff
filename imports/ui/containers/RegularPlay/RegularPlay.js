@@ -9,8 +9,6 @@ import BuzzerLink from "./BuzzerLink/BuzzerLink";
 import BuzzerPopup from "./BuzzerPopup/BuzzerPopup";
 import { objectEmpty } from "../../components/utils";
 import WrongAnswer from "./WrongAnswer/WrongAnswer";
-// let ReactFitText = require('react
-import ReactFitText from "../../components/ReactFitText"
 
 class RegularPlay extends React.Component {
   state = {
@@ -145,6 +143,8 @@ class RegularPlay extends React.Component {
         localStorage.setItem("recentQuestion", this.question_num);
         this.state.fastMoney = data.command.fastMoney;
         this.startFastMoney();
+      }else if (data.command.hasOwnProperty("toggleAudio")){
+        this.props.toggleAudio();
       }else if (data.command.hasOwnProperty("reset")){
         console.log(data);
         if (data.command.reset === true){
@@ -331,9 +331,14 @@ class RegularPlay extends React.Component {
         />
 
         {this.state.showQR && (
-          <div className="bottom-right-controls">
-            <BuzzerLink game_id={this.game_id} />
+            <React.Fragment>
+          <div className="top-left-controls">
+            <BuzzerLink game_id={this.game_id} team={"red"} />
           </div>
+              <div className={"top-right-controls"}>
+                <BuzzerLink game_id={this.game_id} team={"green"} />
+              </div>
+            </React.Fragment>
         )}
         {this.state.show_question && 
         <div style={{background: "rgba(0,0,0,0.93)", position: 'fixed', zIndex:'99', 

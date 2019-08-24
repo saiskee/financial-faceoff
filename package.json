@@ -32,6 +32,7 @@
     "react-dom": "^16.5.0",
     "react-fittext": "^1.0.0",
     "react-hot-loader": "^4.11.0",
+    "react-icons": "^3.7.0",
     "react-material-ui-form-validator": "^2.0.8",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
