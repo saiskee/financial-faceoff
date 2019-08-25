@@ -922,15 +922,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-class@^15.5.3:
-  version "15.6.3"
-  resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
-  integrity sha512-M+/3Q6E6DLO6Yx3OwrWjwHBnvfXXYA7W+dFjt/ZDBemHO1DDZhsalX/NUtnTYclN6GfnBDRh4qRHjcDHmlJBJg==
-  dependencies:
-    fbjs "^0.8.9"
-    loose-envify "^1.3.1"
-    object-assign "^4.1.1"
-
 create-react-context@<=0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.2.tgz#9836542f9aaa22868cd7d4a6f82667df38019dca"
@@ -1400,7 +1391,7 @@ fast-levenshtein@^2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fbjs@^0.8.0, fbjs@^0.8.9:
+fbjs@^0.8.0:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -3528,7 +3519,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^3.0.0"
 
-prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -3660,10 +3651,10 @@ react-context-toolbox@^2.0.2:
   resolved "https://registry.yarnpkg.com/react-context-toolbox/-/react-context-toolbox-2.0.2.tgz#35637287cb23f801e6ed802c2bb7a97e1f04e3fb"
   integrity sha512-tY4j0imkYC3n5ZlYSgFkaw7fmlCp3IoQQ6DxpqeNHzcD0hf+6V+/HeJxviLUZ1Rv1Yn3N3xyO2EhkkZwHn0m1A==
 
-react-device-detect@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.6.2.tgz#2587e4d1dc15bdfce7a1bf5417624ecd2a2fc31f"
-  integrity sha512-XIBgwIfpGAknm7tXe/YNbx4ieIR7IyFI3KNfSQk4UjHVy97UHe/nB7iJj8R/dDsI+I/ZzPR4HJ39Gh5tI4nhxw==
+react-device-detect@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.7.5.tgz#04c8a6475d67b5ac4f984c8d912ec11134f5b893"
+  integrity sha512-ccgJuTHVCI3yfqvgU56gQDvjueFyaHVAXsa5rJuzWRasvsd0IalzfyccSECIlygjv3E+DmAGcwNYWUarUA82Fw==
 
 react-dom@^16.5.0:
   version "16.8.6"
@@ -3683,14 +3674,6 @@ react-event-listener@^0.6.6:
     "@babel/runtime" "^7.2.0"
     prop-types "^15.6.0"
     warning "^4.0.1"
-
-react-fittext@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-fittext/-/react-fittext-1.0.0.tgz#836a1c04f9322f6c94cb69e45c66006fc42d37a5"
-  integrity sha1-g2ocBPkyL2yUy2nkXGYAb8QtN6U=
-  dependencies:
-    create-react-class "^15.5.3"
-    prop-types "^15.5.10"
 
 react-form-validator-core@0.6.3:
   version "0.6.3"
