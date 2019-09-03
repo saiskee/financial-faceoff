@@ -126,7 +126,7 @@ const withAudio = (WrappedComponent) => {
             <ReactAudioPlayer
               src={'/'+this.state.song_url+'.m4a'}
               autoPlay
-              style={{opacity:0.08}}
+              style={{opacity:'0.08'}}
               controls
 
               ref={(element) => { this.player = element; }}

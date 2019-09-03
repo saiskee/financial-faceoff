@@ -92,7 +92,7 @@ class NewGame extends React.Component {
         <Prompt
           when={!this.formIsEmpty() && !this.formIsComplete()}
           message={_ =>
-            `You have started a game. Are you sure you want to leave?`
+            `You have started creating a game. Are you sure you want to leave?`
           }
         />
         <NewQuestion/>
