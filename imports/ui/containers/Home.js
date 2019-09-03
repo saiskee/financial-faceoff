@@ -6,7 +6,7 @@ import {isMobile} from "react-device-detect";
 import {withRouter} from "react-router";
 import withAudio from "../hoc/withAudio";
 import Paper from "@material-ui/core/Paper";
-import "./Home.css";
+// import "./Home.css";
 
 
 const styles = {
@@ -47,7 +47,7 @@ class Home extends React.Component {
                 `}
 
               </style>
-              <div className="panel-back">
+              <div className="panel-back" style={{lineHeight: '52px'}}>
                 {!isMobile &&
                 <span className={"panel-answer"}
                       onClick={() => {
