@@ -543,7 +543,7 @@ class Controller extends React.Component{
 		  {this.round_num === 1
           ? <Button
             variant="contained"
-            style={{float: 'left'}}
+            style={{float: 'left', background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(215,177,210,1) 6%, rgba(148,187,233,1) 100%)'}}
             onClick={this.switchRound.bind(this, 2)}>
             Next Round
           </Button>

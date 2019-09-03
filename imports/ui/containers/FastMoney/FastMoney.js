@@ -86,6 +86,7 @@ class FastMoney extends React.Component {
         this.props.history.push(
           `/games/${this.game_id}/fast/${data.command.roundToSwitchTo}`
         );
+        this.setState({question_num: 0});
         this.state.round_num = this.round_num;
       }
       else if (data.command.hasOwnProperty("backToGame")) {
