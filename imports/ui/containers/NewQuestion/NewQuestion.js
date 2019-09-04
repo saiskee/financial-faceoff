@@ -76,7 +76,8 @@ class NewQuestion extends React.Component {
   }
 
   addResponse = () => {
-    this.setState({responses: [this.state.responses]})
+    // this.setState({responses: [this.state.responses]})
+    this.setState({responses: [...this.state.responses, {answer: "", responses: 0}]})
   };
 
   removeResponse = (i) => {

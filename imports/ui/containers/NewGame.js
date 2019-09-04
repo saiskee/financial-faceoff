@@ -39,7 +39,7 @@ class NewGame extends React.Component {
 
   formIsComplete = () => {
     const {title, regular_questions, fast_money_questions} = this.state;
-    return (title && regular_questions.length >= 5 && fast_money_questions.length === 5);
+    return (title && regular_questions.length >= 5 && fast_money_questions.length === 6);
   };
 
   validateForm = () => {
@@ -48,8 +48,8 @@ class NewGame extends React.Component {
         if (this.state.regular_questions.length < 5) {
           errors.regular = "You need atleast 5 questions for this field";
         }
-        if (this.state.fast_money_questions.length !== 5) {
-          errors.fast = "You need 5 questions for this field"
+        if (this.state.fast_money_questions.length !== 6) {
+          errors.fast = "You need 6 questions for this field"
         }
         this.setState({
           validation_errors: {
@@ -117,7 +117,7 @@ class NewGame extends React.Component {
           {this.state.showErrors ? <p className={"warning"}>{this.state.validation_errors.regular || ""}</p> : null}
           <br/>
 
-          <h4>Fast Money Questions (5 are required)</h4>
+          <h4>Fast Money Questions (6 are required)</h4>
           <TransferList setSelected={this.handleFastChange.bind(this)}/>
           {this.state.showErrors ? <p className={"warning"}>{this.state.validation_errors.fast || ""}</p> : null}
           <br/>

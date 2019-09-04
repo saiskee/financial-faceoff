@@ -108,7 +108,7 @@ class RegularPlay extends React.Component {
         ...this.state,
         question_num: this.question_num
       });
-    }, 1000);
+    }, 500);
     this.getNewQuestion(this.question_num);
     this.props.pause();
 
@@ -315,12 +315,12 @@ class RegularPlay extends React.Component {
       <div className={"RegularPlay"}>
         <div className="team-points team-red">
           <br />
-          <h1 style={{color:"rgb(255, 153, 153)"}}>{this.red_points}</h1>
+          <h1 style={{color:"lightgreen"}}>{this.red_points}</h1>
           <h4>Previous Round: {this.red_points_previous}</h4>
         </div>
         <div className="team-points team-blue">
           <br />
-          <h1 style={{color:"lightGreen"}}>{this.blue_points}</h1>
+          <h1 style={{color:"lightskyblue"}}>{this.blue_points}</h1>
           <h4>Previous Round: {this.blue_points_previous}</h4>
         </div>
 
@@ -336,7 +336,7 @@ class RegularPlay extends React.Component {
             <BuzzerLink game_id={this.game_id} team={"red"} />
           </div>
               <div className={"top-right-controls"}>
-                <BuzzerLink game_id={this.game_id} team={"green"} />
+                <BuzzerLink game_id={this.game_id} team={"blue"} />
               </div>
             </React.Fragment>
         )}

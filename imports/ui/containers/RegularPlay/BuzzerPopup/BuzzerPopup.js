@@ -6,8 +6,8 @@ const buzzerPopup = (props) => (
     :
     <div className={'buzzer'} style={{
       color: props.buzzer_side === 'red' ? 'white' : 'black',
-      background: props.buzzer_side === 'red' ? 'lightcoral' : 'palegreen'}}>
-      <h1>TEAM {props.buzzer_side === 'red' ? 'RED' : 'GREEN'}</h1>
+      background: props.buzzer_side === 'red' ? 'lightgreen' : 'lightskyblue'}}>
+      <h1>TEAM {props.buzzer_side === 'red' ? 'GREEN' : 'BLUE'}</h1>
     </div>
 );
 

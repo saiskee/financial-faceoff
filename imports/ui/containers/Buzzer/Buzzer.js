@@ -32,19 +32,18 @@ class Buzzer extends React.Component {
     if (this.team_name === 'red'){
       return (
         <Button
-          style={styles.button}
+          style={{...styles.button, backgroundColor: 'lightgreen'}}
           fullWidth
           variant={'contained'}
-          color={'secondary'}
-          onClick={this.hitBuzzer.bind(this, 'red')}>Red</Button>
+          onClick={this.hitBuzzer.bind(this, 'red')}>Green</Button>
       )
-    }else if (this.team_name === 'green'){
+    }else if (this.team_name === 'blue'){
       return(
           <Button
-              style={{...styles.button, backgroundColor: 'lightGreen', }}
+              style={{...styles.button, backgroundColor: 'lightskyblue', }}
               fullWidth
               variant={'contained'}
-              onClick={this.hitBuzzer.bind(this, 'blue')}>Green</Button>
+              onClick={this.hitBuzzer.bind(this, 'blue')}>Blue</Button>
       )
     }
   }

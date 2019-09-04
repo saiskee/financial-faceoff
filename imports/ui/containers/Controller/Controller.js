@@ -23,12 +23,12 @@ const styles = {
 	buttonRed: {
 	  height: '140px',
 	  fontSize: '30px',
-	  backgroundColor: 'lightcoral'
+	  backgroundColor: 'lightgreen'
 	},
 	buttonBlue: {
 		height:'140px',
 		fontSize: '30px',
-		backgroundColor: 'palegreen'
+		backgroundColor: 'lightskyblue'
 	}, 
 	paper: {
 		padding : '50px',
@@ -367,7 +367,7 @@ class Controller extends React.Component{
 					
 					onClick={this.awardPoints.bind(this, 'red')}
 						>
-					Award Red 
+					Award Green 
 					</Button>
 				</Grid>
 				<Grid item xs>
@@ -377,7 +377,7 @@ class Controller extends React.Component{
 					variant={'contained'}
 					onClick={this.awardPoints.bind(this, 'blue')}
 						>
-					Award Green 
+					Award Blue 
 					</Button>
 				</Grid>
 			</Grid>
@@ -492,7 +492,7 @@ class Controller extends React.Component{
           </Button>
         
 		  </div>
-        <h1>Fast Money: {this.round_num === 1 ? "Red Team" : "Blue Team"}</h1>
+        <h1>Fast Money: {this.round_num === 1 ? "Green Team" : "Blue Team"}</h1>
 		<p>{this.round_num === 1 ? "Type the answer mentioned below, and choose the closest answer" : "Type the answers mentioned in the second column, and choose the closest answer"}</p>
         <br/>
         <br/>
@@ -504,7 +504,7 @@ class Controller extends React.Component{
 		  >Previous Question
 		  </Button>
 		  }
-		  {this.state.question_num < 4 &&
+		  {this.state.question_num < 5 &&
 		  <Button
 			  style={{backgroundImage: `linear-gradient( to right, yellow, lawngreen)`}}
 			  variant={'contained'}
@@ -520,7 +520,7 @@ class Controller extends React.Component{
             {round_two}
           </Grid>
         </Grid>
-		  {this.state.question_num >= 4 &&
+		  {this.state.question_num >= 5 &&
 		  <Button
 			  variant={'contained'}
 			  color={'primary'}
