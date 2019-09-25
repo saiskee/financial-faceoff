@@ -10,7 +10,7 @@ const withAudio = (WrappedComponent) => {
     state = {
       song_url: "full-theme",
       show_player: true,
-      muted: true,
+      muted: false,
     };
 
     constructor(props) {
