@@ -14,7 +14,7 @@
     "@material-ui/icons": "^4.0.1",
     "array-move": "^2.1.0",
     "autoprefixer": "^9.6.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "gulp": "^3.9.1",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
