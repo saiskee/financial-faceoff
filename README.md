@@ -16,7 +16,7 @@ _The game is online at [Financial Faceoff (Live Online)](http://financial-faceof
 4. Once dependencies are installed, run `yarn start`
 5. Navigate to `localhost:3000` on your browser to access the game!
 
-###Pictures
+### Pictures
 
 ![In Game Display](thumbnails/gamescreenJPG.JPG)
 _Presentation view of Game_
